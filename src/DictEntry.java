@@ -1,31 +1,26 @@
-public class DictEntry {
-    int doc_freg =0;
-    int term_freg=0;
-    Posting pList=null;
 
-    public void addPosting(Posting p){
-        if(pList==null){
-            pList=p;
-            term_freg++;
-            doc_freg++;
+public class DictEntry {
+
+    private int doc_freq = 0; // number of documents that contain the term
+    private int term_freq = 0; //number of times the term is mentioned in the collection
+
+    private Posting pList = null;
+
+
+    public void addPosting(int doc_id) {
+
+        term_freq++;
+        if(pList == null){
+            pList = new Posting(doc_id);
         }
-        else{
-            Posting iterator;
-            iterator =pList;
-            boolean state=false;
-            while (iterator.next!=null){
-                if(p.getDocId()== iterator.getDocId()){
-                    state=true;
-                    break;
-                }
-                Posting temp=iterator.next;
-                iterator=temp;
-            }
-            if(!state){
-                iterator.next=p;
-                term_freg++;
-                doc_freg++;
-            }
-        }
+        else
+            pList.addPosting(doc_id);
+        doc_freq = pList.getSize();
+    }
+
+    public void print(){
+        System.out.println(String.format("Term frequency: %2d\nDocument Frequency: %2d\n", term_freq, doc_freq));
+        pList.printAll();
+        System.out.println("\n______________________________________________");
     }
 }
