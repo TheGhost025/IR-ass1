@@ -27,6 +27,14 @@ public class Posting {
         return size;
     }
 
+    public int getDocId(){
+        return docId;
+    }
+
+    public void countdtf(){
+        dtf++;
+    }
+
     public void print(){
         System.out.println(String.format("document id: %2d \t\t document term frequency: %2d.", docId, dtf));
     }

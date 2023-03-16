@@ -13,8 +13,25 @@ public class DictEntry {
         if(pList == null){
             pList = new Posting(doc_id);
         }
-        else
-            pList.addPosting(doc_id);
+        else {
+            Posting it;
+            boolean state=true;
+            it=pList;
+            while(it.next!=null){
+                if(it.getDocId()==doc_id){
+                    it.countdtf();
+                    state=false;
+                    break;
+                }
+                else{
+                    Posting temp;
+                    it=it.next;
+                }
+            }
+            if(state){
+                it.addPosting(doc_id);
+            }
+        }
         doc_freq = pList.getSize();
     }
 
