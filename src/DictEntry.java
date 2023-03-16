@@ -35,6 +35,10 @@ public class DictEntry {
         doc_freq = pList.getSize();
     }
 
+    public Posting getpList() {
+        return pList;
+    }
+
     public void print(){
         System.out.println(String.format("Term frequency: %2d\nDocument Frequency: %2d\n", term_freq, doc_freq));
         pList.printAll();
