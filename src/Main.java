@@ -103,8 +103,14 @@ public class Main {
 //            index.get(word).print();
 //        }
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a word to search: ");
-        String word = scanner.nextLine();
-        searchWord(word);
+        int i;
+        do{
+            System.out.print("Enter a word to search: ");
+            String word = scanner.next();
+            searchWord(word);
+            System.out.print("If you want to end press 0 or continue press any number: ");
+            i = scanner.nextInt();
+        }
+        while(i != 0);
     }
 }
